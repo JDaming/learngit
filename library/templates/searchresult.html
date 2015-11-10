@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style type="text/css">
+table.hovertable {
+    font-family: verdana,arial,sans-serif;
+    font-size:11px;
+    color:#333333;
+    border-width: 1px;
+    border-color: #999999;
+    border-collapse: collapse;
+}
+table.hovertable th {
+    background-color:#c3dde0;
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #a9c6c9;
+}
+table.hovertable tr {
+    background-color:#d4e3e5;
+}
+table.hovertable td {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #a9c6c9;
+}
+</style>
+
+</head>
+<body>
+      
+	    <h2>“{{author}}”的所有书籍：</h2>
+		<div>
+			<table border="1" class = "hovertable">
+			<tr>
+  				<th>ISBN</th>
+  				<th>书名</th>
+  				<th>作者</th>
+  				<th>出版社</th>
+  				<th>出版日期</th>
+  				<th>价格</th>
+  				<th colspan="3">操作</th>
+			</tr>
+			{% for item in booklist%}
+			<tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
+ 				<td>{{item.ISBN}}</td>
+  				<td>{{item.Title}}</td>
+  				<td>{{item.AuthorID.Name}}</td>
+  				<td>{{item.Publisher}}</td>
+  				<td>{{item.PublishDate}}</td>
+  				<td>{{item.Price}}</td>
+  				<td><input type = "submit" value = "删除"  onclick="location.href='/delete/{{item.ISBN}}'" /></td>
+  				<td><input type = "submit" value = "更新"  onclick="location.href='/update/{{item.ISBN}}'" /></td>
+  				<td><input type = "button" value = "主页"  onclick="location.href='/index/'" /></td>
+			</tr>
+			{% endfor %}
+			</table>
+		 </div>
+       
+</body>
+</html>
